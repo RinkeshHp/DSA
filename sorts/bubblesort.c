@@ -28,7 +28,7 @@ int main(void)
     int arr[] = {1,2,3,5,0,-1,-2,-3};
     bubbleSort(arr, sizeof(arr)/sizeof(int));
     for(int i = 0; i < sizeof(arr)/sizeof(int); ++i)
-        printf("%d",arr[i]);
+        printf("%d\t",arr[i]);
 
     return 0;
 }
