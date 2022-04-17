@@ -30,7 +30,7 @@ unsigned int getNMinNMax(int arr[], unsigned int lb, unsigned int ub)
 
 unsigned int partition(int arr[], unsigned int lb, unsigned int ub)
 {
-    // pivot selection mania(select necessarily from array elements)
+    // pivot selection mania(select necessarily from array elements)****{needs more testing}
     // 1)middle element
     // swap(&arr[lb + (ub - lb)/2], &arr[lb]);
     // 2)neither smallest nor largest
