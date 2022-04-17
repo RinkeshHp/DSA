@@ -20,6 +20,8 @@ void displayArray(int arr[], size_t size)
 unsigned int getNMinNMax(int arr[], unsigned int lb, unsigned int ub)
 {
     unsigned int a = rand()%(ub-lb +1) + lb, b =rand()%(ub-lb +1) + lb,c = rand()%(ub-lb +1) + lb;
+    // printf("%d %d %d \n", a,b,c);
+    // getchar();
     // inefficient comparisons incoming, brace yourselves
     if(arr[a] >= arr[b] && arr[a] < arr[c]) return a;
     else if(arr[b] >= arr[a] && arr[b] < arr[c]) return b;
@@ -34,7 +36,7 @@ unsigned int partition(int arr[], unsigned int lb, unsigned int ub)
     // 2)neither smallest nor largest
     // swap(&arr[getNMinNMax(arr,lb,ub)], &arr[lb]);
     // 3)random
-    // swap(&arr[rand()%(ub-lb +1) + lb], &arr[lb]);
+    swap(&arr[rand()%(ub-lb +1) + lb], &arr[lb]);
     // 4)1st element(no optimisation)
 	int pivot = arr[lb];
 	unsigned int down = lb + 1, up = ub;
@@ -54,11 +56,20 @@ unsigned int partition(int arr[], unsigned int lb, unsigned int ub)
 
 void quickSort(int arr[], unsigned int lb, unsigned int ub)
 {
-    if(lb < ub)
+    while(lb < ub)
     {
         unsigned int pivot = partition(arr, lb, ub);
-        quickSort(arr,lb, pivot - 1);
-        quickSort(arr, pivot + 1, ub);
+        // recurse for smaller part
+        if (pivot - lb < ub - pivot)
+        {
+            quickSort(arr, lb, pivot - 1);
+            lb = pivot + 1;
+        }
+        else
+        {
+            quickSort(arr, pivot + 1, ub);
+            ub = pivot - 1;
+        }
     }
 }
 
